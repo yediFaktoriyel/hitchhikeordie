@@ -1,18 +1,8 @@
-<<<<<<< HEAD
-﻿
-/*
-This script is created by Burak as a whole.
-
-=======
-﻿/*
-This script is created by Burak as a whole.
-*/
 
 /*
->>>>>>> 918b186dd80346a67e41553d5f155e1150872081
+This script is created by Burak as a whole.
 TODO: Add car sound.
 */
-
 using UnityEngine;
 using System.Collections;
 
@@ -26,49 +16,23 @@ public class CarScript : MonoBehaviour {
 	}
 
 	void Update () {
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> 918b186dd80346a67e41553d5f155e1150872081
 		/*transform.position += new Vector3 (0, 0, -0.2f); //Moves car forward every update.
-		Vector3 v = transform.position;
+        Vector3 v = transform.position;
 
-		// If cars z value is more than 500, it spawns random trees depending on a randomly generated number
+        // If cars z value is more than 500, it spawns random trees depending on a randomly generated number
 
-		if( v.z > 100){
+        if( v.z > 100){
 
-			float ranGen = Random.Range (0, 100);
+            float ranGen = Random.Range (0, 100);
 
-			if(ranGen < 2 && ranGen > 0f){
-				
-			GameObject treeSpawn = (GameObject)Instantiate(tree, new Vector3(v.x - 2.2f , 0.05f , v.z - 100), transform.rotation);
-			
-			}
-		}*/
-<<<<<<< HEAD
-=======
+            if(ranGen < 2 && ranGen > 0f){
+                
+            GameObject treeSpawn = (GameObject)Instantiate(tree, new Vector3(v.x - 2.2f , 0.05f , v.z - 100), transform.rotation);
+            
+            }
+        }*/
 
-	}
-
-	void FixedUpdate(){
-		
-		transform.position += new Vector3 (0, 0, -1f); //Moves car forward every update.
-		Vector3 v = transform.position;
-
-		// If cars z value is more than 500, it spawns random trees depending on a randomly generated number
-
-		if( v.z > 100){
->>>>>>> 918b186dd80346a67e41553d5f155e1150872081
-
-			float ranGen = Random.Range (0, 100);
-
-			if(ranGen < 2 && ranGen > 0f){
-
-				GameObject treeSpawn = (GameObject)Instantiate(tree, new Vector3(v.x - 2.2f , 0.05f , v.z - 100), transform.rotation);
-
-			}
-		}
 	}
 
 	void FixedUpdate(){
