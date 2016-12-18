@@ -5,47 +5,98 @@
 */ 
 
 using UnityEngine;
-using UnityEngine.UI; //To use UI objects like slider and images etc.
-using System.Collections;
 
-public class PlayerHealth : MonoBehaviour {
-	public int startingHealth = 100;
-	public int currentHealth;
-	public Slider HealthSlider;
+using UnityEngine.UI; //To use UI objects like slider and images etc.
+
+using System.Collections;public class PlayerHealth : MonoBehaviour {    public Slider HealthSlider;
+
 	public Image DamageImage;
+
 	//TODO: Implement some voices for low health and being dead.
+
 	public float flashSpeed = 5f;
+
 	public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
+
+	public int startingHealth = 100;
+
+	public int currentHealth;
 
 	PlayerScript getScriptRef;
 
-	bool dead;
-	bool gotDamage; 
-	// Use this for initialization
+	bool isHit;    bool dead;
+
+	bool gotDamage;
+
 	void Start () {
-		GameObject playerScript = GameObject.Find("PlayerScript");
-		PlayerScript getScriptRef = playerScript.GetComponent<PlayerScript> ();
-		//Initialize the current health as 100
+		
 		currentHealth = startingHealth;
-	}
-	
-	// Update is called once per frame
+
+	}    // Update is called once per frame
+
 	void Update () {
-		if (PlayerScript.isHitted == true) {
+
+		isHit = PlayerScript.isHitted;
+
+		if (isHit == true) {
+
 			//Shows a red splash screen
+
 			DamageImage.color = flashColor;
-			//Decrease the health by 20
-			currentHealth = currentHealth - 20;
-			if (currentHealth <= 0) 
-			{
-				dead = true;
-				Debug.Log ("UR DED");
-			}
+
+			Damage ();
+
 		}
+
 		else
+
 		{
-			//TODO: Check the output
+
+			DamageImage.color = Color.Lerp (DamageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+
 		}
+
 		gotDamage = false;
-	}
+
+		}   
+
+		public void Damage()
+
+		{
+
+			//gotDamage = true;
+
+			Debug.Log("Burda sorun yok");
+
+			//Decrease the health by 20
+
+			currentHealth -= 10;
+
+			Debug.Log (currentHealth);
+
+			HealthSlider.value = currentHealth;
+
+			if (currentHealth <= 0)
+
+			{
+
+				alreadyDead ();
+
+				Debug.Log ("UR DED");
+
+			}
+		}   
+		
+		void alreadyDead()
+
+		{
+
+		//TODO: Add animations and disable feature to here
+
+
+
+		dead = true;
+
+		}
+
 }
