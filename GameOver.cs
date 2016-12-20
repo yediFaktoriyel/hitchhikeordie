@@ -9,7 +9,7 @@ using System.Collections;
 
 public class GameOver : MonoBehaviour {
 
-	public PlayerHealth playerHealth;
+    public PlayerHealth playerHealthObject;
 	public float restartDelay = 5f;
 
 	Animator animate;
@@ -24,7 +24,7 @@ public class GameOver : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (playerHealth.currentHealth <= 0) 
+		if (playerHealthObject.currentHealth <= 0) 
 		{
 			animate.SetTrigger ("GameOver");
 

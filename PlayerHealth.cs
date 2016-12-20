@@ -47,22 +47,24 @@ public class PlayerHealth : MonoBehaviour {    public Slider HealthSlider;
 	{
 		DamageImage.color = Color.Lerp (DamageImage.color, Color.clear, flashSpeed * Time.deltaTime);
 	}
-	gotDamage = false;
+
 	}
 
 	public void Damage()
 	{
-		gotDamage = true;
-		Debug.Log("Burda sorun yok");
+		//gotDamage = true;
+		Debug.Log(currentHealth);
 
 		//Decrease the health by 20
-		currentHealth -= 10; //Changed by Burak
+		currentHealth -= 2; //Changed by Burak
 		HealthSlider.value = currentHealth;
 		if (currentHealth <= 0) 
 		{
 			alreadyDead ();
 			Debug.Log ("UR DED");
 		}
+		gotDamage = false;
+
 	}
 
 	void alreadyDead()
