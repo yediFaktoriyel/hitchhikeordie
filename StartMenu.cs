@@ -1,40 +1,27 @@
-﻿// This portion of the project is implemented by Ahmet Ozan Sivri. 
+﻿// This script of the project is implemented by Ahmet Ozan Sivri. 
+//The script simply manages the start scene. 
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; 
 using System.Collections;
 
 public class StartMenu : MonoBehaviour {
 
-	public Canvas exitGame;
+
 	public Button startText;
 	public Button exitText;
 
 	// Use this for initialization
 	void Start () {
-		exitGame = exitGame.GetComponent<Canvas> ();
-		exitGame.enabled = false;
-		startText = startText.GetComponent<Button> ();
-		exitText = exitText.GetComponent<Button> ();
+		Button btn = startText.GetComponent<Button> ();
+		btn.onClick.AddListener (ChangeScene);
+		Button btnE = exitText.GetComponent<Button> ();
+		btnE.onClick.AddListener (ExitGame);
 	}
-
-	public void Exit()
+		
+	public void ChangeScene()
 	{
-		exitGame.enabled = true;
-		startText.enabled = false;
-		exitText.enabled = false; 
-	}
-
-	public void noExit()
-	{
-		exitGame.enabled = false;
-		startText.enabled = true;
-		exitText.enabled = true; 
-	}
-
-	public void startGame()
-	{
-		SceneManager.LoadScene("hhod"); 
+		SceneManager.LoadScene("hhod"); //Loads the first level 
 	}
 
 	public void ExitGame()
@@ -43,8 +30,7 @@ public class StartMenu : MonoBehaviour {
 	}
 
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+
+		
 }
