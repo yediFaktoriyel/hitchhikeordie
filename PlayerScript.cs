@@ -26,6 +26,8 @@ public class PlayerScript : MonoBehaviour {
 		//Added to use in PlayerHealth Script by Ahmet(12.18.16 / 4.26 AM)
 		isHitted = true;
 		Debug.Log ("Check for Health");
+
+		//Created a second collider tagged as score. 
 		if (other.tag == "score") {
 			scoreObject.score += 10;
 			isInside = false;

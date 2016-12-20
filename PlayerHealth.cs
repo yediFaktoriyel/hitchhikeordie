@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour {    public Slider HealthSlider;
 	public void Damage()
 	{
 		//gotDamage = true;
-		Debug.Log(currentHealth);
+		//Debug.Log(currentHealth);
 
 		//Decrease the health by 20
 		currentHealth -= 2; //Changed by Burak
