@@ -1,41 +1,37 @@
-﻿/*
-  This portion of the project is implemented by Ahmet Ozan Sivri.
-  12/20/2016
-*/ 
-
-//TODO: Write Comments
+﻿// This script of the project is implemented by Ahmet Ozan Sivri. 
+//The script simply manages the start scene. 
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 using System.Collections;
 
 public class GameOver : MonoBehaviour {
 
-    public PlayerHealth playerHealthObject;
-	public float restartDelay = 5f;
 
-	Animator animate;
-	float restart;
+	public Button mainMenu;
+	public Button exitGame;
 
 	// Use this for initialization
-	void Awake () 
-	{
-		animate = GetComponent<Animator> ();
-	}
-		
-	// Update is called once per frame
-	void Update () 
-	{
-		if (playerHealthObject.currentHealth <= 0) 
-		{
-			animate.SetTrigger ("GameOver");
+	void Start () {
+		Button btn = mainMenu.GetComponent<Button> ();
+		btn.onClick.AddListener (ChangeScene);
+		Button exitBtn = exitGame.GetComponent<Button> ();
+		exitBtn.onClick.AddListener (ExitGame);
 
-			restart += Time.deltaTime;
-
-			if (restart >= restartDelay)
-			{
-				//TODO: Change the below with SceneManager.
-				//Seems like LoadLevel does not exist anymore
-				Application.LoadLevel (Application.loadedLevel);
-			}
-		}
 	}
+
+	public void ChangeScene()
+	{
+		SceneManager.LoadScene("startMenu"); //Loads the first level 
+	}
+
+	public void ExitGame()
+	{
+		Application.Quit();
+	}
+
+
+
+
+
 }
