@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿/* This script is created by Burak as a whole. */
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -15,15 +17,6 @@ public class ScoreDisplayer : MonoBehaviour {
 		scoreText = GetComponent<Text> ();
 
 	}
-
-/*	void OnGUI() {
-
-		GUI.Label (Rect(0,0,100,100), scoreText.text);
-
-	}
-*/
-
-
 
 	void Update () {
 

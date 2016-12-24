@@ -1,21 +1,18 @@
 ﻿/*
 This script is created by Burak. Additions made by Ahmet are stated as comments.
 */
+
 using UnityEngine;
 using UnityEngine.UI; //To use UI objects like slider and images etc.
 using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-	public Slider chokeSlider;
 	public ScoreDisplayer scoreObject;
 	public GameObject Car;
 	public static bool isHitted;
-	//Added to use in PlayerHealth Script by Ahmet(12.18.16 / 4.26 AM)
-	//public int score = 0; 
 	//Added to use in GameOver and LevelUp Screens by Ahmet(12.18.16/5.47 PM)
 	Text text;
-	public bool isInside;
 
 
 	void Start () {
@@ -24,61 +21,34 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		//Added to use in PlayerHealth Script by Ahmet(12.18.16 / 4.26 AM)
+		
 		isHitted = true;
-		Debug.Log ("Check for Health" + other.name);
 
-		//Created a second collider tagged as score. 
-/*		if (other.tag == "score") {
-			scoreObject.score += 10;
-			isInside = false;
-			Debug.Log ("Score" + scoreObject.score);
-		}	*/
 	}
 		
 	void OnTriggerExit(Collider other){
-		//Added to use in PlayerHealth Script by Ahmet(12.18.16 / 4.26 AM)
+		
 		isHitted = false;
-		//score = score + 10; //Added by Ahmet
-		Debug.Log ("Check for Health");
+
 	}
 
 	void Update () {
 		
 		if(Input.GetKeyDown(KeyCode.LeftArrow)){
 			
-			isInside = true;
-			transform.localPosition = new Vector3 (-0.8f, -0.297f, -0.34f);	//Player moves his head to left if left arrow is pressed.
+			transform.localPosition = new Vector3 (-0.8f, -0.297f, -0.34f);		//Player moves his head to left if left arrow is pressed...
 
 		}
+
 		if(Input.GetKeyUp(KeyCode.LeftArrow)){
 
-			isInside = false;
 			transform.parent = Car.transform;
-			transform.localPosition = new Vector3 (-0.53f, -0.297f, -0.34f);	//Player moves back to the right
+			transform.localPosition = new Vector3 (-0.53f, -0.297f, -0.34f);	//... and player moves back to the right
 
 		}
-
-		if (Input.GetKey (KeyCode.LeftArrow)) {
-
-			float timeCounter;
-			timeCounter = Time.deltaTime;
-			chokeSlider.value += timeCounter * 1;
-
-		}
-
-		if (Input.GetKey (KeyCode.LeftArrow) == false) {
-
-			if (chokeSlider.value > 0) {
-
-				float timeCounter;
-				timeCounter = Time.deltaTime;
-				chokeSlider.value -= timeCounter * 1;
-			}
-
-		}
-
 	}
+
+
 
 	void FixedUpdate(){
 
