@@ -13,10 +13,9 @@ public class GameOver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Button btn = mainMenu.GetComponent<Button> ();
-		btn.onClick.AddListener (ChangeScene);
-		Button exitBtn = exitGame.GetComponent<Button> ();
-		exitBtn.onClick.AddListener (ExitGame);
+		mainMenu.onClick.AddListener (ChangeScene);
+
+		exitGame.onClick.AddListener (ExitGame);
 
 	}
 

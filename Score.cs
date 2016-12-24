@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿// This portion of the project is implemented by Ahmet Ozan Sivri.
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -18,7 +19,7 @@ public class Score : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 		text.text = "Score: " + score;
 	}
 

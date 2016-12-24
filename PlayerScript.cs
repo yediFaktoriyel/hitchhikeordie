@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		//Added to use in PlayerHealth Script by Ahmet(12.18.16 / 4.26 AM)
 		isHitted = true;
-		Debug.Log ("Check for Health");
+		Debug.Log ("Check for Health" + other.name);
 
 		//Created a second collider tagged as score. 
 		if (other.tag == "score") {
@@ -43,31 +43,37 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void Update () {
-		/*
 		if(Input.GetKey(KeyCode.LeftArrow)){
-			transform.localPosition = new Vector3 (-0.8f, -0.37f, -0.34f);    //Player moves his head to left if left arrow is pressed.
+			isInside = true;
+			transform.localPosition = new Vector3 (-0.8f, -0.297f, -0.34f);	//Player moves his head to left if left arrow is pressed.
 		}
 
 		if(Input.GetKeyUp(KeyCode.LeftArrow)){
+			isInside = false;
 			transform.parent = Car.transform;
-			transform.localPosition = new Vector3 (-0.53f, -0.37f, -0.34f);    //Player moves back to the right
+			transform.localPosition = new Vector3 (-0.53f, -0.297f, -0.34f);	//Player moves back to the right
 
-		}*/
+		}
 	}
 
 	void FixedUpdate(){
 		
-		if(Input.GetKey(KeyCode.LeftArrow)){
+
+		/*
+		 * if(Input.GetButtonDown("Horizontal")){
 			isInside = true;
 			transform.localPosition = new Vector3 (-0.8f, -0.37f, -0.34f);	//Player moves his head to left if left arrow is pressed.
 		}
-
-		if(Input.GetKey(KeyCode.RightArrow)){
+		if (Input.GetButtonUp ("LeftArrow")) {
 			isInside = false;
 			transform.parent = Car.transform;
 			transform.localPosition = new Vector3 (-0.53f, -0.37f, -0.34f);	//Player moves back to the right
-
 		}
+		myCoroutine.WaitForRealSeconds(2);	
+		transform.localPosition = new Vector3 (-0.53f, -0.37f, -0.34f);	//Player moves back to the right
+		*/
+
+
 	}
 
 }
