@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement; 
 using UnityEngine.UI;
 
 public class BuraksPlayerHealth : MonoBehaviour {
@@ -29,6 +30,12 @@ public class BuraksPlayerHealth : MonoBehaviour {
 		isHit = true;
 		HealthSlider.value -= Damage;
 
+		//Added by Ahmet
+		if (HealthSlider.value <= 0) {
+			SceneManager.LoadScene("gameOver");  
+
+		}
+
 
 	}
 
@@ -39,6 +46,8 @@ public class BuraksPlayerHealth : MonoBehaviour {
 	}
 
 	void Update () {
+
+		//Debug.Log ("Health is: " + CurrentHealth);
 
 		if (CurrentHealth <= 0){
 

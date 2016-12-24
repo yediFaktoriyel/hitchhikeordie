@@ -2,6 +2,8 @@
 
 using UnityEngine.UI; //To use UI objects like slider and images etc.
 
+using UnityEngine.SceneManagement; 
+
 using System.Collections;
 
 
@@ -42,6 +44,8 @@ using System.Collections;
 
 	void Update () {    
 
+		Debug.Log ("Current Health is:" + currentHealth);
+
 		isHit = PlayerScript.isHitted;    
 
 		if (isHit == true) {
@@ -75,7 +79,7 @@ using System.Collections;
 
 			alreadyDead ();
 
-			Debug.Log ("UR DED");
+			SceneManager.LoadScene("gameOver");  
 
 		}
 
@@ -89,7 +93,6 @@ using System.Collections;
 		{
 
 		//TODO: Add animations and disable feature to here
-
 
 
 		dead = true;
