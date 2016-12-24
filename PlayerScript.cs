@@ -7,7 +7,7 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-	public Score scoreObject;
+	public ScoreDisplayer scoreObject;
 	public GameObject Car;
 	public static bool isHitted;
 	//Added to use in PlayerHealth Script by Ahmet(12.18.16 / 4.26 AM)
@@ -28,11 +28,11 @@ public class PlayerScript : MonoBehaviour {
 		Debug.Log ("Check for Health" + other.name);
 
 		//Created a second collider tagged as score. 
-		if (other.tag == "score") {
+/*		if (other.tag == "score") {
 			scoreObject.score += 10;
 			isInside = false;
 			Debug.Log ("Score" + scoreObject.score);
-		}	
+		}	*/
 	}
 		
 	void OnTriggerExit(Collider other){
@@ -43,21 +43,23 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void Update () {
-		if(Input.GetKey(KeyCode.LeftArrow)){
+		
+		if(Input.GetKeyDown(KeyCode.LeftArrow)){
 			isInside = true;
 			transform.localPosition = new Vector3 (-0.8f, -0.297f, -0.34f);	//Player moves his head to left if left arrow is pressed.
 		}
-
 		if(Input.GetKeyUp(KeyCode.LeftArrow)){
 			isInside = false;
 			transform.parent = Car.transform;
 			transform.localPosition = new Vector3 (-0.53f, -0.297f, -0.34f);	//Player moves back to the right
 
 		}
+
 	}
 
 	void FixedUpdate(){
 		
+
 
 		/*
 		 * if(Input.GetButtonDown("Horizontal")){
