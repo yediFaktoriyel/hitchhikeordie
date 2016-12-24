@@ -22,13 +22,17 @@ public class RightUpController : MonoBehaviour {
 
 	Canvas canvas;
 
+
 	Animator anim;
+
+	bool isRunning = true;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent <Animator> ();
+		anim.SetBool ("PauseMenu", false);
+		//anim ["PauseMenu"].time = animTime; 
 		//anim.SetTrigger ("IdleState");
-
 		canvas = GetComponent<Canvas>();
 		canvas.enabled = false;
 
@@ -66,21 +70,34 @@ public class RightUpController : MonoBehaviour {
 		}
 	}
 		
+	//AnimationState.time >= AnimationState.normalizedTime
 	public void StopGame()
 	{
 		//Used this method instead of normal Time.timeScale
 		//Because the animation wasn't able to play.
-		canvas.enabled = !canvas.enabled;
-		Time.timeScale = Time.timeScale == 0 ? 1 : 0; //Stops the game.
 		anim.SetTrigger ("PauseMenu");
 		anim.Play ("PauseMenu");
+
+		waitForAnimate (10f);
+		canvas.enabled = !canvas.enabled;
+		Time.timeScale = Time.timeScale == 0 ? 1 : 0; //Stops the game.
+	
+
+	}
+
+	IEnumerator waitForAnimate(float seconds)
+	{
+		yield return new WaitForSeconds (seconds);
 	}
 
 	public void ResumeGame()
 	{
+		
 		Time.timeScale = 1; //Re run the game
 	}
 
+	//TODO: Fix it
+	//Problem: It's freezing.
 	public void MainMenu ()
 	{
 		SceneManager.LoadScene("startMenu");  
