@@ -13,7 +13,7 @@ public class GameOver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+			
 		mainMenu.onClick.AddListener (ChangeScene);
 
 		exitGame.onClick.AddListener (ExitGame);

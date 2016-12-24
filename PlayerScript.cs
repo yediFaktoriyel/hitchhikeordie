@@ -7,6 +7,7 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
+	public Slider chokeSlider;
 	public ScoreDisplayer scoreObject;
 	public GameObject Car;
 	public static bool isHitted;
@@ -45,35 +46,41 @@ public class PlayerScript : MonoBehaviour {
 	void Update () {
 		
 		if(Input.GetKeyDown(KeyCode.LeftArrow)){
+			
 			isInside = true;
 			transform.localPosition = new Vector3 (-0.8f, -0.297f, -0.34f);	//Player moves his head to left if left arrow is pressed.
+
 		}
 		if(Input.GetKeyUp(KeyCode.LeftArrow)){
+
 			isInside = false;
 			transform.parent = Car.transform;
 			transform.localPosition = new Vector3 (-0.53f, -0.297f, -0.34f);	//Player moves back to the right
 
 		}
 
+		if (Input.GetKey (KeyCode.LeftArrow)) {
+
+			float timeCounter;
+			timeCounter = Time.deltaTime;
+			chokeSlider.value += timeCounter * 1;
+
+		}
+
+		if (Input.GetKey (KeyCode.LeftArrow) == false) {
+
+			if (chokeSlider.value > 0) {
+
+				float timeCounter;
+				timeCounter = Time.deltaTime;
+				chokeSlider.value -= timeCounter * 1;
+			}
+
+		}
+
 	}
 
 	void FixedUpdate(){
-		
-
-
-		/*
-		 * if(Input.GetButtonDown("Horizontal")){
-			isInside = true;
-			transform.localPosition = new Vector3 (-0.8f, -0.37f, -0.34f);	//Player moves his head to left if left arrow is pressed.
-		}
-		if (Input.GetButtonUp ("LeftArrow")) {
-			isInside = false;
-			transform.parent = Car.transform;
-			transform.localPosition = new Vector3 (-0.53f, -0.37f, -0.34f);	//Player moves back to the right
-		}
-		myCoroutine.WaitForRealSeconds(2);	
-		transform.localPosition = new Vector3 (-0.53f, -0.37f, -0.34f);	//Player moves back to the right
-		*/
 
 
 	}
