@@ -4,12 +4,14 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class BuraksPlayerHealth : MonoBehaviour {
 
 	public float PlayerHealth = 100.0f;
 	public float CurrentHealth;
 	public float Damage = 20.0f;
+	public AudioSource hit;
 	public Slider HealthSlider;
 	public Slider chokeSlider;
 	public Image DamageImage;
@@ -32,6 +34,7 @@ public class BuraksPlayerHealth : MonoBehaviour {
 
 		isHit = true;
 		HealthSlider.value -= Damage;
+		hit.Play();
 
 		if (HealthSlider.value <= 0) {
 
@@ -56,11 +59,13 @@ public class BuraksPlayerHealth : MonoBehaviour {
 
 		if (isHit) {
 			
-			Debug.Log ("Şimdilik iyi.");
 			CurrentHealth -= Damage;
 			DamageImage.color = flashColor;
 
-		} else {
+
+		}
+
+		else {
 			
 			DamageImage.color = Color.Lerp (DamageImage.color, Color.clear, flashSpeed * Time.deltaTime);
 
@@ -93,11 +98,15 @@ public class BuraksPlayerHealth : MonoBehaviour {
 
 		if (chokeSlider.value > 1.90) {
 
-			float timePassed;
-			float baseDamage = 0.2f;
-			timePassed = Time.deltaTime;
+			float baseDamage = 0.7f;
 			CurrentHealth -= baseDamage;
 			HealthSlider.value -= baseDamage;
+
+			if (HealthSlider.value <= 0) {
+
+				SceneManager.LoadScene("gameOver");
+
+			}
 
 		}
 	}

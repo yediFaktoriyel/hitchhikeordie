@@ -9,12 +9,14 @@ public class ScoreDisplayer : MonoBehaviour {
 	CarScript getScriptRef;
 
 	public Text scoreText;
+
 	public int Score;
 
 
 	void Start () {
 
 		scoreText = GetComponent<Text> ();
+
 
 	}
 
@@ -24,6 +26,4 @@ public class ScoreDisplayer : MonoBehaviour {
 		scoreText.text = "Score: " + Score;
 
 	}
-
-
 }
