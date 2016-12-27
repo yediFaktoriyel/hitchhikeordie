@@ -49,8 +49,8 @@ public class RightUpController : MonoBehaviour {
 			isPushed = true;
 		}
 
-		mute.GetComponent<Button> ();
-		mute.onClick.AddListener (MuteGame);
+		/*mute.GetComponent<Button> ();
+		mute.onClick.AddListener (MuteGame);*/
 
 	}
 
