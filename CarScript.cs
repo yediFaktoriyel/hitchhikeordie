@@ -5,6 +5,7 @@ This script is created by Burak as a whole.
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CarScript : MonoBehaviour {
 
@@ -134,9 +135,9 @@ public class CarScript : MonoBehaviour {
 			}
 		}
 
-		if (v.z == 10) {
-
-			Application.Quit();
+		if (v.z <= 10) {
+			Debug.Log ("In the Function");
+			SceneManager.LoadScene("levelUp");
 
 		}
 	}
