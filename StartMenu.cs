@@ -21,7 +21,7 @@ public class StartMenu : MonoBehaviour {
 		
 	public void ChangeScene()
 	{
-		SceneManager.LoadScene("hhod"); //Loads the first level 
+		SceneManager.LoadScene("story"); //Loads the first level 
 	}
 
 	public void ExitGame()

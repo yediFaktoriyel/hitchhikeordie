@@ -1,5 +1,6 @@
 ﻿// This script of the project is implemented by Ahmet Ozan Sivri. 
 //The script simply manages the pause menu. 
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement; 

@@ -12,13 +12,17 @@ public class BuraksPlayerHealth : MonoBehaviour {
 	public float CurrentHealth;
 	public float Damage = 20.0f;
 	public AudioSource hit;
+	public AudioSource pick;
 	public Slider HealthSlider;
 	public Slider chokeSlider;
 	public Image DamageImage;
 	public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
 	public float flashSpeed = 5f;
 	PlayerScript getScriptRef;
+	public GameObject HPSphere;
+	public GameObject NoSpawnSphere;
 	bool isHit;
+	bool isProtected;
 
 	void Awake () {
 		
@@ -32,9 +36,37 @@ public class BuraksPlayerHealth : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 
-		isHit = true;
-		HealthSlider.value -= Damage;
-		hit.Play();
+		if (other.CompareTag ("HPSphere")) {
+
+			pick.Play ();
+
+			HealthSlider.value += 40.0f;
+
+			if (HealthSlider.value > 100)
+				HealthSlider.value = 100;
+
+		}
+
+		else if (other.CompareTag ("NoSpawnSphere")) {  // EDıT START
+
+			pick.Play ();
+
+			CarScript.isProtected = true;
+
+			Debug.Log (CarScript.isProtected);
+
+			//StartCoroutine (waiter());
+
+			Debug.Log (CarScript.isProtected);
+		}
+
+		else {
+
+			isHit = true;
+			HealthSlider.value -= Damage;
+			hit.Play ();
+
+		}
 
 		if (HealthSlider.value <= 0) {
 
@@ -59,7 +91,7 @@ public class BuraksPlayerHealth : MonoBehaviour {
 
 		if (isHit) {
 			
-			CurrentHealth -= Damage;
+			CurrentHealth = HealthSlider.value;
 			DamageImage.color = flashColor;
 
 

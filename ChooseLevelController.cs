@@ -29,11 +29,4 @@ public class ChooseLevelController : MonoBehaviour {
 		SceneManager.LoadScene("hhod"); //Loads the first level 
 	}
 
-
-
-
-
-
-
-
 }

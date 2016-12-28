@@ -1,8 +1,7 @@
-
 /*
 This script is created by Burak as a whole.
-TODO: Add car sound.
 */
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -11,11 +10,32 @@ public class CarScript : MonoBehaviour {
 
 	PlayerScript getScriptRef;	// EKLENDi
 	public GameObject tree;
-	public GameObject sign;
+	public GameObject HPSphere;
+	public GameObject NoSpawnSphere;
 	public static int Score = 0;
 	public static float Distance = 0;
+	public static bool isProtected = false;
+
+	void Awake () {
+
+		GameObject treeSpawnFront1 = (GameObject)Instantiate(tree, new Vector3(43.31f , 0.05f , 7010), transform.rotation);
+		GameObject treeSpawnBack1 = (GameObject)Instantiate(tree, new Vector3(43.31f , 0.05f , 6995), transform.rotation);
+
+		GameObject treeSpawnFront2 = (GameObject)Instantiate(tree, new Vector3(43.31f , 0.05f , 4510), transform.rotation);
+		GameObject treeSpawnBack2 = (GameObject)Instantiate(tree, new Vector3(43.31f , 0.05f , 4495), transform.rotation);
+
+		GameObject treeSpawnFront3 = (GameObject)Instantiate(tree, new Vector3(43.31f , 0.05f , 2010), transform.rotation);
+		GameObject treeSpawnBack3 = (GameObject)Instantiate(tree, new Vector3(43.31f , 0.05f , 1995), transform.rotation);
+
+		GameObject HPCubeSpawn = (GameObject)Instantiate(HPSphere, new Vector3(43.31f , 2f , 4500), transform.rotation);
+		GameObject NoSpawnCubeSpawn1 = (GameObject)Instantiate(NoSpawnSphere, new Vector3(43.31f , 2f , 8000), transform.rotation);
+		GameObject NoSpawnCubeSpawn2 = (GameObject)Instantiate(NoSpawnSphere, new Vector3(43.31f , 2f , 2000), transform.rotation);
+
+	}
+
 
 	void Start () {
+
 
 	}
 
@@ -103,15 +123,21 @@ public class CarScript : MonoBehaviour {
 			}
 		}
 
-		if( v.z < 1000 ) {
+		if( v.z > 100 && v.z < 1000 ) {
 
 			float ranGen = Random.Range (0, 100);
 
-			if(ranGen < 3 && ranGen > 0f){
+			if(ranGen < 3.5 && ranGen > 0f){
 
 				GameObject treeSpawn = (GameObject)Instantiate(tree, new Vector3(v.x - 2.2f , 0.05f , v.z - 100), transform.rotation);
 
 			}
+		}
+
+		if (v.z == 10) {
+
+			Application.Quit();
+
 		}
 	}
 
