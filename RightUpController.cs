@@ -9,13 +9,11 @@ using System.Collections;
 public class RightUpController : MonoBehaviour {
 
 	//For the buttons on the game screen
-	public Button stopGame;
-	public Button exitGame;
+
 
 	GameObject theIcon;
-	public Button mute;
-	public Sprite musicOn;
-	public Sprite musicOff;
+
+
 	public bool isMuted = false;
 
 
@@ -29,11 +27,8 @@ public class RightUpController : MonoBehaviour {
 
 	void Update()
 	{
-		Button btn = stopGame.GetComponent<Button> ();
-		btn.onClick.AddListener (StopGame);
-
 		if(Input.GetKey(KeyCode.P))
-		{
+		{	
 			StopGame ();
 		}
 
@@ -42,16 +37,14 @@ public class RightUpController : MonoBehaviour {
 			ResumeGame ();
 		}
 
-		Button btnE = exitGame.GetComponent<Button> ();
-		btnE.onClick.AddListener (ExitGame);
+
 
 		if(Input.GetKey(KeyCode.Escape))
 		{
 			isPushed = true;
 		}
 
-		/*mute.GetComponent<Button> ();
-		mute.onClick.AddListener (MuteGame);*/
+
 
 	}
 
@@ -73,6 +66,7 @@ public class RightUpController : MonoBehaviour {
 		isPushed = true;
 	}
 
+	/*
 	public void MuteGame()
 	{
 		Debug.Log ("In the function");
@@ -81,7 +75,9 @@ public class RightUpController : MonoBehaviour {
 		AudioListener.volume = 0;
 	}
 
+	*/
 	//Double check here
+	/*
 	public void ChangeIcon()
 	{
 		if (isMuted == true) {
@@ -92,5 +88,6 @@ public class RightUpController : MonoBehaviour {
 			theIcon.GetComponent<Image> ().sprite = musicOff;
 		}
 	}
+	*/
 		
 }

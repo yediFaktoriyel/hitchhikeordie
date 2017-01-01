@@ -28,7 +28,7 @@ public class CarScript : MonoBehaviour {
 		GameObject treeSpawnFront3 = (GameObject)Instantiate(tree, new Vector3(43.31f , 0.05f , 2010), transform.rotation);
 		GameObject treeSpawnBack3 = (GameObject)Instantiate(tree, new Vector3(43.31f , 0.05f , 1995), transform.rotation);
 
-		GameObject HPCubeSpawn = (GameObject)Instantiate(HPSphere, new Vector3(43.31f , 2f , 4500), transform.rotation);
+		GameObject HPCubeSpawn = (GameObject)Instantiate(HPSphere, new Vector3(43.31f , 2f , 8000), transform.rotation);
 		GameObject NoSpawnCubeSpawn1 = (GameObject)Instantiate(NoSpawnSphere, new Vector3(43.31f , 2f , 8000), transform.rotation);
 		GameObject NoSpawnCubeSpawn2 = (GameObject)Instantiate(NoSpawnSphere, new Vector3(43.31f , 2f , 2000), transform.rotation);
 
