@@ -22,7 +22,7 @@ public class BuraksPlayerHealth : MonoBehaviour {
 	public GameObject HPSphere;
 	public GameObject NoSpawnSphere;
 	bool isHit;
-	bool isProtected;
+	public static float zEnd;
 
 	void Awake () {
 		
@@ -33,6 +33,7 @@ public class BuraksPlayerHealth : MonoBehaviour {
 	void Start () {
 	
 	}
+		
 
 	void OnTriggerEnter(Collider other){
 
@@ -53,11 +54,11 @@ public class BuraksPlayerHealth : MonoBehaviour {
 
 			CarScript.isProtected = true;
 
+			Vector3 v = transform.position;
+			zEnd = v.z - 500.0f;
+			Debug.Log (zEnd);
 			Debug.Log (CarScript.isProtected);
 
-			//StartCoroutine (waiter());
-
-			Debug.Log (CarScript.isProtected);
 		}
 
 		else {
@@ -83,17 +84,10 @@ public class BuraksPlayerHealth : MonoBehaviour {
 
 	void Update () {
 
-		if (CurrentHealth <= 0) {
-
-
-
-		}
-
 		if (isHit) {
 			
 			CurrentHealth = HealthSlider.value;
 			DamageImage.color = flashColor;
-
 
 		}
 
@@ -128,6 +122,8 @@ public class BuraksPlayerHealth : MonoBehaviour {
 
 	void FixedUpdate(){
 
+		Vector3 v1 = transform.position;
+
 		if (chokeSlider.value > 1.90) {
 
 			float baseDamage = 0.7f;
@@ -139,6 +135,14 @@ public class BuraksPlayerHealth : MonoBehaviour {
 				SceneManager.LoadScene("gameOver");
 
 			}
+
+		}
+
+		if (v1.z < zEnd) {
+
+			Debug.Log (v1.z);
+			CarScript.isProtected = false;
+			Debug.Log (CarScript.isProtected);
 
 		}
 	}

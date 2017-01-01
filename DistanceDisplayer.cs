@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DistanceDisplayer : MonoBehaviour {
 
 	public Text distanceTravelled;
-	public float Distance;
+	public float Distance2;
 
 
 	void Start () {
@@ -19,8 +19,8 @@ public class DistanceDisplayer : MonoBehaviour {
 
 	void FixedUpdate () {
 
-		Distance = CarScript.Distance;
-		distanceTravelled.text = "Distance: " + Distance;
+		Distance2 = CarScript.Distance;
+		distanceTravelled.text = "Distance: " + Distance2;
 
 	}
 }
